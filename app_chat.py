@@ -76,11 +76,12 @@ if check_password():
 
         #Uncomment the second line to have GPT4 option in the select box dropdown menu
 
-        model = st.selectbox(
-            "Select a model",
-            ("gpt-3.5-turbo",)
-            #("gpt-3.5-turbo", "gpt-4")
-        )
+        # model = st.selectbox(
+        #     "Select a model",
+        #     ("gpt-3.5-turbo",)
+        #     #("gpt-3.5-turbo", "gpt-4")
+        # )
+        model = "gpt-3.5-turbo"
 
         if 'generated' not in st.session_state:
             st.session_state['generated'] = []
