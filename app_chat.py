@@ -7,7 +7,11 @@ from dotenv import load_dotenv
 load_dotenv()
 import openai
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+#openai.api_key = os.getenv('OPENAI_API_KEY')
+
+# For streamlit deployment, the api key is added to streamlit-secrets in the app settings (during/after delpoyment)
+openai.api_key = st.secrets["OPEN_API_KEY"]
+
 
 def main():
     st.set_page_config(page_title="Chatbot Application", page_icon=":robot_face:", layout="centered")
