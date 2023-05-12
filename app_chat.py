@@ -70,6 +70,10 @@ if check_password():
 
         if 'query' not in st.session_state:
             st.session_state.query = ''
+        
+        if st.session_state.bug_flag == 1:
+            st.warning("Oops, your previous message was sent to the model again", icon = "🤖")
+        
 
         def submit():
             st.session_state.query = st.session_state.input
@@ -126,6 +130,8 @@ if check_password():
                 st.session_state.generated.append(response)
                 display()
                 #st.experimental_rerun()
+        
+        st.write("Like it? Want to talk? Mailto: Leonid Sokolov: leonid.sokolov@big-picture.com // Imke Bewersdorf: imke.bewersdorf@big-picture.com")
                 
 
 
@@ -143,8 +149,17 @@ if check_password():
             mod_filename = mod_filename.strip()
             return mod_filename
 
+
+        if 'generated' in st.session_state:
+            st.session_state.bug_flag = 1
+        else:
+            st.session_state.bug_flag = 0
+
+        
+        
         if 'prompt' not in st.session_state:
             st.session_state.prompt = ""
+
 
         # uploaded_file = st.file_uploader("Choose a prompt file:")
 
@@ -177,6 +192,8 @@ if check_password():
         if st.button("Save Prompt"):
             st.session_state.prompt = prompt
             st.success("Prompt saved successfully!")
+        
+        st.write("Like it? Want to talk? Mailto: Leonid Sokolov: leonid.sokolov@big-picture.com // Imke Bewersdorf: imke.bewersdorf@big-picture.com")
 
 
     if __name__ == "__main__":
