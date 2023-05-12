@@ -81,7 +81,8 @@ if check_password():
         #     ("gpt-3.5-turbo",)
         #     #("gpt-3.5-turbo", "gpt-4")
         # )
-        model = "gpt-3.5-turbo"
+        #model = "gpt-3.5-turbo"
+        model = "gpt-4"
 
         if 'generated' not in st.session_state:
             st.session_state['generated'] = []
