@@ -131,7 +131,7 @@ if check_password():
                 display()
                 #st.experimental_rerun()
         
-        st.write("Like it? Want to talk? Mailto: Leonid Sokolov: leonid.sokolov@big-picture.com // Imke Bewersdorf: imke.bewersdorf@big-picture.com")
+        st.write("Like it? Want to talk? leonid.sokolov@big-picture.com // imke.bewersdorf@big-picture.com")
                 
 
 
@@ -193,7 +193,7 @@ if check_password():
             st.session_state.prompt = prompt
             st.success("Prompt saved successfully!")
         
-        st.write("Like it? Want to talk? Mailto: Leonid Sokolov: leonid.sokolov@big-picture.com // Imke Bewersdorf: imke.bewersdorf@big-picture.com")
+        st.write("Like it? Want to talk? leonid.sokolov@big-picture.com // imke.bewersdorf@big-picture.com")
 
 
     if __name__ == "__main__":
