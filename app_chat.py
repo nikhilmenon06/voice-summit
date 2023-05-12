@@ -193,7 +193,7 @@ if check_password():
             st.session_state.prompt = prompt
             st.success("Prompt saved successfully!")
         
-        st.markdown('Like it? Want to talk? Get in touch! <a href="mailto:leonid.sokolov@big-picture.com">Leonid Sokolov !</a> // <a href="mailto:hello@streamlit.io">Imke Bewersdorf</a>', unsafe_allow_html=True)
+        st.markdown('Like it? Want to talk? Get in touch! <a href="mailto:leonid.sokolov@big-picture.com">Leonid Sokolov</a> // <a href="mailto:hello@streamlit.io">Imke Bewersdorf</a>', unsafe_allow_html=True)
 
 
     if __name__ == "__main__":
