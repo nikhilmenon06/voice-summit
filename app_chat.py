@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 import openai
+from io import StringIO
 
 # streamlit_app.py
 
@@ -131,10 +132,47 @@ if check_password():
 
     def editor():
 
+
+        def filename_display(filename):
+            filename = filename[:-4]
+            split_filename = filename.split("_")
+            mod_filename = ""
+            for part in split_filename:
+                mod_filename = mod_filename + part.capitalize() + " "
+            
+            mod_filename = mod_filename.strip()
+            return mod_filename
+
         if 'prompt' not in st.session_state:
             st.session_state.prompt = ""
 
-        prompt = st.text_area("Write your prompt here:", value=st.session_state.prompt, height=200)
+        # uploaded_file = st.file_uploader("Choose a prompt file:")
+
+        # if uploaded_file is not None:
+        #     stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        #     string_data = stringio.read()
+        #     st.session_state.prompt = string_data
+
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # Path to /prompts subdirectory
+        prompts_dir = os.path.join(script_dir, 'prompts')
+
+        # List all files in the /prompts directory
+        files = [f for f in os.listdir(prompts_dir) if os.path.isfile(os.path.join(prompts_dir, f))]
+
+        # Add a select box for all files
+        selected_file = st.selectbox('Select a file:', files, format_func = filename_display)
+        selected_file_path = os.path.join(prompts_dir,selected_file)
+
+        with open(selected_file_path, "r") as file:
+            selected_file_contents = file.read()
+
+
+        st.session_state.prompt =  selected_file_contents
+        
+
+        prompt = st.text_area("Your prompt is here:", value=st.session_state.prompt, height=200)
 
         if st.button("Save Prompt"):
             st.session_state.prompt = prompt
